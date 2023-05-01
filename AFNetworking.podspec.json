@@ -1,0 +1,86 @@
+{
+  "name": "AFNetworking",
+  "version": "4.0.1",
+  "license": "MIT",
+  "summary": "A delightful networking framework for Apple platforms.",
+  "homepage": "https://github.com/AFNetworking/AFNetworking",
+  "social_media_url": "https://twitter.com/AFNetworking",
+  "authors": {
+    "Mattt Thompson": "m@mattt.me"
+  },
+  "source": {
+    "git": "https://github.com/AFNetworking/AFNetworking.git",
+    "tag": "4.0.1"
+  },
+  "platforms": {
+    "ios": "11.0",
+    "watchos": "7.0"
+  },
+  "ios": {
+    "pod_target_xcconfig": {
+      "PRODUCT_BUNDLE_IDENTIFIER": "com.alamofire.AFNetworking"
+    },
+    "public_header_files": "AFNetworking.xcframework/ios-arm64/*/Headers/*.h",
+    "source_files": "AFNetworking.xcframework/ios-arm64/*/Headers/*.h"
+  },
+  "watchos": {
+    "pod_target_xcconfig": {
+      "PRODUCT_BUNDLE_IDENTIFIER": "com.alamofire.AFNetworking-watchOS"
+    },
+    "public_header_files": "AFNetworking.xcframework/watchos-arm64_arm64_32_armv7k/*/Headers/*.h",
+    "source_files": "AFNetworking.xcframework/watchos-arm64_arm64_32_armv7k/*/Headers/*.h"
+  },
+  "static_framework": true,
+  "subspecs": [
+    {
+      "name": "Serialization",
+      "source_files": "AFNetworking/AFURL{Request,Response}Serialization.{h,m}"
+    },
+    {
+      "name": "Security",
+      "source_files": "AFNetworking/AFSecurityPolicy.{h,m}"
+    },
+    {
+      "name": "Reachability",
+      "platforms": {
+        "ios": "11.0"
+      },
+      "source_files": "AFNetworking/AFNetworkReachabilityManager.{h,m}"
+    },
+    {
+      "name": "NSURLSession",
+      "dependencies": {
+        "AFNetworking/Serialization": [
+
+        ],
+        "AFNetworking/Security": [
+
+        ]
+      },
+      "ios": {
+        "dependencies": {
+          "AFNetworking/Reachability": [
+
+          ]
+        }
+      },
+      "source_files": [
+        "AFNetworking/AF{URL,HTTP}SessionManager.{h,m}",
+        "AFNetworking/AFCompatibilityMacros.h"
+      ]
+    },
+    {
+      "name": "UIKit",
+      "platforms": {
+        "ios": "11.0"
+      },
+      "dependencies": {
+        "AFNetworking/NSURLSession": [
+
+        ]
+      },
+      "source_files": "UIKit+AFNetworking"
+    }
+  ],
+  "vendored_frameworks": "AFNetworking.xcframework"
+}
